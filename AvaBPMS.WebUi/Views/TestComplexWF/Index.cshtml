@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Workflow Test Page";
+}
+@model ICollection<AvaBPMS.Application.Models.WorkFlowInstanseDto>
+<div class="container">
+    <h1 class="display-4">Test Complex Workflow</h1>
+    <p>
+        Start New  <a href="TestComplexWF/CreateNewInstance/" class="btn btn-success m-1">Instanse</a>.<br />
+        view as <a href="TestComplexWF/UserView?UserId=Dcc" class="btn btn-danger m-1">Dcc</a><br />
+        view as <a href="TestComplexWF/UserView?UserId=D1" class="btn btn-danger m-1">D1</a><br />
+        view as <a href="TestComplexWF/UserView?UserId=D2" class="btn btn-danger m-1">D2</a><br />
+        view as <a href="TestComplexWF/UserView?UserId=D3" class="btn btn-danger m-1">D3</a><br />
+    </p>
+    <p>
+        <h5>Created Instanse</h5>
+    </p>
+    <div >
+        <table class="table table-responsive">
+            @foreach (var item in Model)
+            {
+                <tr><td>@item.Id</td><td>@item.PoolTitle</td><td>@item.AssignDate</td>
+                    <td>
+                        @if(!item.IsStarted)
+                        {
+                            <a href="TestComplexWF/StartWorkFlow/@item.Id">Start WorkFlow</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+        
+    </div>
+</div>

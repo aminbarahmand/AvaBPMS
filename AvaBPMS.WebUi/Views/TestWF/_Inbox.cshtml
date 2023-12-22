@@ -1,0 +1,39 @@
+﻿@using AvaBPMS.Application.Models
+@model IList<WorkFlowStepDto>
+ 
+
+
+
+<div class="row ">
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>PoolTitle</td>
+                <td>ReceiveDate</td>
+                <td>WorkFlowNodeTitle</td>
+                <td>IsAlive</td>
+                <td>
+
+                </td>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.PoolTitle</td>
+                <td>@item.ReceiveDate</td>
+                <td>@item.WorkFlowNodeTitle</td>
+                <td>@item.IsALive</td>
+                <td>
+                    @Html.ActionLink("Step View", actionName: "UserStep",controllerName: "TestWF", new { StepId = item.Id }, htmlAttributes: new { @class = "btn btn-danger m-1" })
+                   
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+

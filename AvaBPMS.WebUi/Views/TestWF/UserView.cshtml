@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Workflow Test Page";
+}
+@model ICollection<AvaBPMS.Application.Models.WorkFlowInstanseDto>
+<div class="text-center">
+    <h1 class="display-4">Test Workflow</h1>
+    
+    <div >
+        <h4>Inbox</h4>
+        <div id="detailList">
+        </div>
+      
+        <h4>All Created Instanse Related To User</h4>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>PoolTitle</td>
+                    <td>AssignDate</td>
+                    <td>IsStarted</td>
+                    <td>HasAliveStep</td>
+                    
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.PoolTitle</td>
+                    <td>@item.AssignDate</td>
+                    <td>@item.IsStarted</td>
+                    <td>@item.HasAliveStep</td>
+                     
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+@section Scripts
+{
+    
+    <script type="text/javascript">
+
+        
+         
+        function ReCreateDetailList() {
+
+           
+           
+            
+                $.ajax({
+                    url: '/TestWF/GetUserInboxList/',
+                    contentType: 'application/html',
+                   
+                    success: function (response) {
+
+                        $('#detailList').html(response);
+                       
+
+                    },
+
+                    error: function (e) {
+
+                        alert(e.message);
+                    }
+
+                });
+            
+
+        }
+        ReCreateDetailList();
+    </script>
+}

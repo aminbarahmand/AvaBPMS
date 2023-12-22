@@ -1,0 +1,20 @@
+﻿@using AvaBPMS.Application.Models;
+@model IList<string>
+ 
+
+
+
+<div class="row ">
+
+    <div class="col">
+        @foreach (var item in Model)
+        {
+
+            @Html.ActionLink(item, actionName: "HandleChangeStep", controllerName: "TestComplexWF", new { StepId = ViewBag.StepId, Command = item }, htmlAttributes: new { @class = "btn btn-danger m-1" })
+               
+            
+        }
+    </div>
+</div>
+
+
